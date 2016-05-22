@@ -27,8 +27,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var atpDollarLable: UILabel!
     @IBOutlet weak var qpDollarLable: UILabel!
     @IBOutlet weak var profitDollarLable: UILabel!
+    //@IBOutlet weak var atpRMBLable: UILabel!
     @IBOutlet weak var qpRMBLable: UILabel!
     @IBOutlet weak var profitRMBLable: UILabel!
+    @IBOutlet weak var InsuranceDollarLable: UILabel!
+    @IBOutlet weak var InsuranceRMBLable: UILabel!
     
     @IBOutlet weak var messageLable: UILabel!
     
@@ -70,6 +73,8 @@ class ViewController: UIViewController {
         var PackagePrice: Float!
         
         var afterTaxPrice: Float!
+        var InsuranceFeeDollar: Float!
+        var InsuranceFeeRMB: Float!
         var quotePriceDollar: Float!
         var profitDollar: Float!
         var quotePriceRMB: Float!
@@ -118,6 +123,12 @@ class ViewController: UIViewController {
         afterTaxPrice   = (originalPrice*(100-discount)/100)*(1+tax/100)
         atpDollarLable.text = String(afterTaxPrice)
         
+        InsuranceFeeDollar = afterTaxPrice*0.03
+        InsuranceDollarLable.text = String(InsuranceFeeDollar)
+        
+        InsuranceFeeRMB = InsuranceFeeDollar * exchangeRate
+        InsuranceRMBLable.text = String(InsuranceFeeRMB)
+        
         profitDollar    = afterTaxPrice * purchaseFee/100
         profitDollarLable.text = String(profitDollar)
         
@@ -127,7 +138,7 @@ class ViewController: UIViewController {
         ShippingFee     = weight * unitShippingFee
         shippingFeeTotalText.text = String(ShippingFee)
         
-        quotePriceDollar = afterTaxPrice*(1+purchaseFee/100) + ShippingFee + PackagePrice
+        quotePriceDollar = afterTaxPrice*(1+purchaseFee/100) + ShippingFee + PackagePrice + InsuranceFeeDollar
         qpDollarLable.text = String(quotePriceDollar)
         
         quotePriceRMB   = quotePriceDollar * exchangeRate
