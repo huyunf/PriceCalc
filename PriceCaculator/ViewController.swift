@@ -153,6 +153,8 @@ class ViewController: UIViewController {
         shippingFeeTotalText.text = String(0.0)
         qpDollarLable.text = String(0.0)
         qpRMBLable.text = String(0.0)
+        InsuranceDollarLable.text = String(0.0)
+        InsuranceRMBLable.text = String(0.0)
         
         originalPriceText.text = String(0.0)
     }

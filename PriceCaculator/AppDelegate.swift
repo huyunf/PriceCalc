@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  PriceCaculator
 //
-//  Created by Yunfeng Hu on 3/13/16.
+//  Created by Yunfeng Hu on 3/13/16.˚
 //  Copyright © 2016 Yunfeng Hu. All rights reserved.
 //
 
