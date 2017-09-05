@@ -7,6 +7,41 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 
 
@@ -36,7 +71,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageLable: UILabel!
     
     // deal with keyboard when enter number
-    @IBAction func CloseKeyBoard(sender: AnyObject) {
+    @IBAction func CloseKeyBoard(_ sender: AnyObject) {
         originalPriceText.resignFirstResponder()
         discountText.resignFirstResponder()
         taxText.resignFirstResponder()
@@ -48,7 +83,7 @@ class ViewController: UIViewController {
         packagePriceText.resignFirstResponder()
     }
 
-    @IBAction func keyBoardDone(sender: UITextField) {
+    @IBAction func keyBoardDone(_ sender: UITextField) {
         originalPriceText.resignFirstResponder()
         discountText.resignFirstResponder()
         taxText.resignFirstResponder()
@@ -61,7 +96,7 @@ class ViewController: UIViewController {
     }
     
     // calculate button
-    @IBAction func calculateButton(sender: UIButton) {
+    @IBAction func calculateButton(_ sender: UIButton) {
         var originalPrice: Float!
         var discount: Float!
         var tax: Float!
@@ -146,7 +181,7 @@ class ViewController: UIViewController {
         
     }
 
-    @IBAction func resetButton(sender: UIButton) {
+    @IBAction func resetButton(_ sender: UIButton) {
         atpDollarLable.text = String(0.0)
         profitDollarLable.text = String(0.0)
         profitRMBLable.text = String(0.0)
